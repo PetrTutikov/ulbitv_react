@@ -21,11 +21,13 @@ function App() {
   return (
     <div className="App">
       <form>
+        {/*управляемый компонент*/}
         <MyInput value={title}
                  onChange={e => setTitle(e.target.value)}
                  type='text'
                  placeholder='Название поста'
         />
+        {/*не управляемый не контролируемый*/}
         <MyInput
           ref={bodyInputRef}
           type='text'
