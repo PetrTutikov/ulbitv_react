@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import './styles/App.css'
 import PostList from './components/PostList'
 import MyButton from './components/UI/button/MyButton'
@@ -11,25 +11,32 @@ function App() {
     {id: 3, title: 'Javascript 3', body: 'Description'}
   ])
   const [title, setTitle] = useState('')
-  const bodyInputRef = useRef()
+  const [body, setBody] = useState('')
+
+
   const addNewPost = (e) => {
     e.preventDefault()
-    console.log(title)
-    console.log(bodyInputRef.current.value)
+    const newPost = {
+      id: Date.now(),
+      title,
+      body
+    }
+    setPosts([...posts, newPost])
+    setTitle('')
+    setBody('')
   }
 
   return (
     <div className="App">
       <form>
-        {/*управляемый компонент*/}
         <MyInput value={title}
                  onChange={e => setTitle(e.target.value)}
                  type='text'
                  placeholder='Название поста'
         />
-        {/*не управляемый не контролируемый*/}
         <MyInput
-          ref={bodyInputRef}
+          value={body}
+          onChange={e => setBody(e.target.value)}
           type='text'
           placeholder='Описание поста'
         />
