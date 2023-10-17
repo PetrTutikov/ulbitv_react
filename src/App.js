@@ -5,16 +5,12 @@ import About from './pages/About'
 import Posts from './pages/Posts'
 import Error from './pages/Error'
 import NavBar from './components/UI/Navbar/NavBar'
+import AppRouter from './components/AppRouter'
 function App () {
   return (
     <BrowserRouter>
       <NavBar/>
-      <Routes>
-        <Route path="/about" element={<About />}/>
-        <Route path="/posts" element={<Posts />}/>
-        <Route path="/" element={<Posts />}/>
-        <Route path="*" element={<Navigate to='/error' replace/>}/>
-      </Routes>
+      <AppRouter/>
     </BrowserRouter>
   )
 }
